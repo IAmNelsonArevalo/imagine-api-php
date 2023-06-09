@@ -259,8 +259,6 @@ class ProductsController extends Controller
             ->whereStatusId($this->active_status)
             ->whereHas('references', function ($query) {
                 $query->whereStatusId($this->active_status);
-            })->whereHas('images', function ($query) {
-                $query->whereStatusId($this->active_status);
             })->get();
 
         return $this->responseApi(true, ['type' => 'success', 'content' => 'Done.'], $products);
